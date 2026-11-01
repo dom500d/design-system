@@ -1,6 +1,6 @@
 {
   "name": "@dom500d/design-system",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "license": "SEE LICENSE IN LICENSE",
   "description": "Sectional: shared color tokens and CSS components, based on aeronautical and survey charts.",
@@ -16,7 +16,10 @@
     "./tokens.css": "./src/tokens.css",
     "./src/*": "./src/*"
   },
-  "files": ["dist", "src"],
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "node scripts/build.mjs",
     "test": "node scripts/build.mjs && node scripts/contrast.mjs",

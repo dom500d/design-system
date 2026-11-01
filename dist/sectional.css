@@ -1,4 +1,4 @@
-/* Sectional 0.1.0 */
+/* Sectional 0.1.1 */
 /* Sectional. Everything sits in cascade layers, so a project's own unlayered
    CSS always wins and the kit can be adopted one component at a time. */
 @layer ds.tokens, ds.base, ds.components;

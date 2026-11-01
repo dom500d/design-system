@@ -1,0 +1,24 @@
+{
+  "name": "@dom500d/design-system",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sectional: shared color tokens and CSS components, based on aeronautical and survey charts.",
+  "type": "module",
+  "style": "dist/sectional.css",
+  "types": "dist/tokens.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/tokens.d.ts",
+      "default": "./dist/tokens.js"
+    },
+    "./sectional.css": "./dist/sectional.css",
+    "./tokens.css": "./src/tokens.css",
+    "./src/*": "./src/*"
+  },
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/build.mjs && node scripts/contrast.mjs",
+    "docs": "npm run build && open docs/index.html"
+  }
+}

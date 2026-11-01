@@ -1,0 +1,117 @@
+.ds-field {
+  display: grid;
+  gap: var(--ds-1);
+  min-width: 0;
+}
+
+.ds-label {
+  color: var(--ds-fg2);
+  font-size: var(--ds-text-sm);
+  font-weight: 500;
+}
+
+.ds-help {
+  color: var(--ds-fg2);
+  font-size: var(--ds-text-xs);
+}
+
+.ds-error {
+  color: var(--ds-bad);
+  font-size: var(--ds-text-xs);
+  font-weight: 500;
+}
+
+.ds-input {
+  width: 100%;
+  min-height: var(--ds-control);
+  padding: var(--ds-2) var(--ds-3);
+  border: 1px solid var(--ds-line-strong);
+  border-radius: var(--ds-radius);
+  background: var(--ds-surface);
+  color: var(--ds-fg);
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-text-md);
+  line-height: 1.4;
+  transition: border-color var(--ds-fast) var(--ds-ease);
+}
+
+.ds-input::placeholder { color: var(--ds-fg2); opacity: 0.8; }
+.ds-input:hover { border-color: var(--ds-fg2); }
+.ds-input:focus-visible { outline-offset: 0; border-color: var(--ds-accent); }
+.ds-input:disabled { opacity: 0.5; cursor: not-allowed; }
+
+textarea.ds-input {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+select.ds-input {
+  appearance: none;
+  padding-right: var(--ds-6);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--ds-fg2) 50%),
+    linear-gradient(135deg, var(--ds-fg2) 50%, transparent 50%);
+  background-position: right 1.05rem center, right 0.75rem center;
+  background-size: 0.3rem 0.3rem;
+  background-repeat: no-repeat;
+}
+
+.ds-input[aria-invalid='true'] { border-color: var(--ds-bad); }
+
+.ds-check {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ds-2);
+  font-size: var(--ds-text-md);
+  cursor: pointer;
+}
+
+.ds-check input[type='checkbox']:not(.ds-switch),
+.ds-check input[type='radio'] {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0;
+  flex: none;
+  accent-color: var(--ds-fill);
+}
+
+.ds-switch {
+  appearance: none;
+  position: relative;
+  width: 2.5rem;
+  height: 1.5rem;
+  margin: 0;
+  flex: none;
+  border: 1px solid var(--ds-line-strong);
+  border-radius: 999px;
+  background: var(--ds-sunken);
+  cursor: pointer;
+  transition: background-color var(--ds-fast) var(--ds-ease),
+    border-color var(--ds-fast) var(--ds-ease);
+}
+
+/* The knob is a waypoint ring. */
+.ds-switch::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--ds-fg2);
+  border-radius: 50%;
+  background: var(--ds-surface);
+  transform: translateY(-50%);
+  transition: transform var(--ds-fast) var(--ds-ease),
+    border-color var(--ds-fast) var(--ds-ease);
+}
+
+.ds-switch:checked {
+  background: var(--ds-fill);
+  border-color: var(--ds-fill);
+}
+
+.ds-switch:checked::after {
+  border-color: var(--ds-fill);
+  transform: translate(1rem, -50%);
+}

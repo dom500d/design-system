@@ -1,0 +1,54 @@
+.ds-container {
+  width: 100%;
+  max-width: var(--ds-page);
+  margin-inline: auto;
+  padding-left: max(var(--ds-4), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--ds-4), env(safe-area-inset-right, 0px));
+}
+
+.ds-container--wide { max-width: none; }
+.ds-container--prose { max-width: calc(var(--ds-prose) + 2 * var(--ds-4)); }
+
+.ds-stack {
+  display: grid;
+  align-content: start;
+  gap: var(--ds-gap, var(--ds-4));
+}
+
+.ds-stack > * { min-width: 0; }
+
+.ds-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ds-gap, var(--ds-3));
+}
+
+.ds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--ds-min, 18rem)), 1fr));
+  gap: var(--ds-gap, var(--ds-4));
+}
+
+.ds-split {
+  display: grid;
+  gap: var(--ds-5);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 60rem) {
+  .ds-split { grid-template-columns: minmax(0, 1fr) 22rem; }
+}
+
+.ds-quiet { color: var(--ds-fg2); }
+.ds-small { font-size: var(--ds-text-sm); }
+.ds-num { font-variant-numeric: tabular-nums; }
+
+.ds-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

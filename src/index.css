@@ -1,0 +1,13 @@
+/* Sectional. Everything sits in cascade layers, so a project's own unlayered
+   CSS always wins and the kit can be adopted one component at a time. */
+@layer ds.tokens, ds.base, ds.components;
+
+@import "./tokens.css" layer(ds.tokens);
+@import "./base.css" layer(ds.base);
+@import "./components/layout.css" layer(ds.components);
+@import "./components/button.css" layer(ds.components);
+@import "./components/form.css" layer(ds.components);
+@import "./components/data.css" layer(ds.components);
+@import "./components/surface.css" layer(ds.components);
+@import "./components/navigation.css" layer(ds.components);
+@import "./components/route.css" layer(ds.components);

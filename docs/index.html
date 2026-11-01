@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sectional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../dist/sectional.css">
+<style>
+  /* Docs-only layout. Nothing here ships in the kit. */
+  main { --ds-gap: var(--ds-8); padding-block: var(--ds-7); }
+  section { --ds-gap: var(--ds-5); scroll-margin-top: 6rem; }
+  .lede { font-size: var(--ds-text-lg); color: var(--ds-fg2); }
+  .specimen { display: grid; gap: var(--ds-3); }
+  .specimen h3 { font-size: var(--ds-text-lg); }
+  .swatch { display: grid; gap: var(--ds-1); font-size: var(--ds-text-xs); }
+  .swatch i { display: block; height: 3rem; border: 1px solid var(--ds-line); border-radius: var(--ds-radius); }
+  .swatch code { color: var(--ds-fg2); }
+  .route-map { display: block; width: 100%; height: auto; background: var(--ds-sunken); border-radius: var(--ds-radius); }
+  .profile { display: block; width: 100%; height: auto; }
+  .profile text { font-family: var(--ds-font-body); font-size: 11px; fill: var(--ds-fg2); }
+  .type-row { display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: var(--ds-3); align-items: baseline; }
+</style>
+</head>
+<body>
+<header class="ds-header">
+  <div class="ds-container ds-header__inner">
+    <a class="ds-brand" href="#top">Sectional</a>
+    <nav class="ds-nav" aria-label="Sections">
+      <a href="#in-use" aria-current="true">In use</a>
+      <a href="#color">Color</a>
+      <a href="#type">Type</a>
+      <a href="#actions">Actions</a>
+      <a href="#forms">Forms</a>
+      <a href="#data">Data</a>
+      <a href="#surfaces">Surfaces</a>
+      <a href="#route">Route line</a>
+    </nav>
+    <div class="ds-header__end">
+      <div class="ds-segmented" role="radiogroup" aria-label="Color theme">
+        <label><input type="radio" name="theme" value="system" checked>Auto</label>
+        <label><input type="radio" name="theme" value="light">Light</label>
+        <label><input type="radio" name="theme" value="dark">Dark</label>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="ds-container ds-stack" id="top">
+  <div class="ds-stack" style="--ds-gap: var(--ds-3)">
+    <h1>Sectional</h1>
+    <p class="lede">Shared colors and components, drawn from aeronautical and survey charts. Flat and printed, with one magenta route line that shows where you are.</p>
+  </div>
+
+  <section class="ds-stack" id="in-use">
+    <h2>In use</h2>
+    <p class="ds-quiet">Two screens built only from the kit. All names and figures here are examples.</p>
+
+    <div class="ds-stack">
+      <h3>App screen</h3>
+      <div class="ds-tabs" role="tablist" aria-label="Route views">
+        <button role="tab" aria-selected="true">Overview</button>
+        <button role="tab" aria-selected="false">Segments</button>
+        <button role="tab" aria-selected="false">Weather</button>
+      </div>
+      <div class="ds-split">
+        <div class="ds-card">
+          <div class="ds-card__head">
+            <h4 class="ds-card__title">Torrey Pines loop</h4>
+            <span class="ds-pill ds-pill--good">Published</span>
+          </div>
+          <div class="ds-card__body">
+            <svg class="route-map" viewBox="0 0 640 220" role="img" aria-label="Example route across contour lines with four waypoints">
+              <g fill="none" stroke="var(--ds-line)"><ellipse cx="190" cy="130" rx="230" ry="100"/><ellipse cx="190" cy="130" rx="165" ry="70"/><ellipse cx="190" cy="130" rx="100" ry="42"/><ellipse cx="190" cy="130" rx="40" ry="15"/><ellipse cx="560" cy="40" rx="190" ry="90"/><ellipse cx="560" cy="40" rx="120" ry="56"/><ellipse cx="560" cy="40" rx="52" ry="22"/></g>
+              <path d="M40 180 L220 74 L420 150 L600 50" fill="none" stroke="var(--ds-accent)" stroke-width="2"/>
+              <g fill="var(--ds-sunken)" stroke="var(--ds-accent)" stroke-width="2"><circle cx="40" cy="180" r="6"/><circle cx="220" cy="74" r="6"/><circle cx="420" cy="150" r="6"/><circle cx="600" cy="50" r="6"/></g>
+            </svg>
+            <dl class="ds-stats">
+              <div class="ds-stat"><dt>Distance</dt><dd>42.3<small>km</small></dd></div>
+              <div class="ds-stat"><dt>Climbing</dt><dd>612<small>m</small></dd></div>
+              <div class="ds-stat"><dt>Best time</dt><dd>1:48:12</dd></div>
+              <div class="ds-stat"><dt>Avg power</dt><dd>214<small>W</small></dd></div>
+            </dl>
+            <figure style="margin:0" id="profile"></figure>
+            <div class="ds-row" style="justify-content: space-between">
+              <ul class="ds-legend"><li style="--ds-key: var(--ds-series-1)">Elevation, meters</li></ul>
+              <div class="ds-segmented" role="radiogroup" aria-label="Date range">
+                <label><input type="radio" name="range" value="w">Week</label>
+                <label><input type="radio" name="range" value="m" checked>Month</label>
+                <label><input type="radio" name="range" value="y">Year</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ds-stack">
+          <div class="ds-card">
+            <div class="ds-card__head"><h4 class="ds-card__title">Route settings</h4></div>
+            <div class="ds-card__body">
+              <div class="ds-field"><label class="ds-label" for="demo-name">Route name</label><input class="ds-input" id="demo-name" value="Torrey Pines loop"></div>
+              <div class="ds-field"><label class="ds-label" for="demo-sport">Sport</label><select class="ds-input" id="demo-sport"><option>Road cycling</option><option>Gravel</option><option>Run</option></select></div>
+              <label class="ds-check"><input class="ds-switch" type="checkbox" role="switch" checked>Avoid busy roads</label>
+              <div class="ds-row"><button class="ds-btn ds-btn--primary" type="button">Save route</button><button class="ds-btn" type="button">Export GPX</button></div>
+            </div>
+          </div>
+          <div class="ds-callout ds-callout--warn"><strong>Headwind after 3 PM.</strong> Start before noon to avoid the sea breeze on the return.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-stack">
+      <h3>Portfolio page</h3>
+      <div class="ds-grid">
+        <a class="ds-card" href="#in-use">
+          <svg class="ds-card__media" viewBox="0 0 320 180" role="img" aria-label="Placeholder image"><g fill="none" stroke="var(--ds-line)"><ellipse cx="160" cy="90" rx="130" ry="70"/><ellipse cx="160" cy="90" rx="80" ry="42"/><ellipse cx="160" cy="90" rx="34" ry="16"/></g></svg>
+          <div class="ds-card__body">
+            <h4 class="ds-card__title">Autonomous race car</h4>
+            <p class="ds-quiet ds-small">Perception and planning on a one-tenth scale platform.</p>
+            <div class="ds-row" style="--ds-gap: var(--ds-1)"><span class="ds-tag">Robotics</span><span class="ds-tag">ML</span></div>
+          </div>
+        </a>
+        <a class="ds-card" href="#in-use">
+          <svg class="ds-card__media" viewBox="0 0 320 180" role="img" aria-label="Placeholder image"><path d="M0 130 L60 110 L120 124 L190 60 L250 88 L320 40" fill="none" stroke="var(--ds-line-strong)"/></svg>
+          <div class="ds-card__body">
+            <h4 class="ds-card__title">Route builder</h4>
+            <p class="ds-quiet ds-small">Plans rides from a description, with weather along the way.</p>
+            <div class="ds-row" style="--ds-gap: var(--ds-1)"><span class="ds-tag">Web</span><span class="ds-tag">Cycling</span></div>
+          </div>
+        </a>
+        <div class="ds-card">
+          <div class="ds-card__head"><h4 class="ds-card__title">Experience</h4></div>
+          <div class="ds-card__body">
+            <ol class="ds-route">
+              <li><span class="ds-route__meta">2026 to now</span><span class="ds-route__title">Software engineer</span></li>
+              <li><span class="ds-route__meta">2022 to 2026</span><span class="ds-route__title">UC San Diego</span></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-stack" id="color">
+    <h2>Color</h2>
+    <p class="ds-quiet">Pale chart paper, navy ink, airway magenta for position and the main action, and chart blue for links. Hex values update with the theme.</p>
+    <div class="ds-grid" id="swatches" style="--ds-min: 8rem; --ds-gap: var(--ds-3)"></div>
+  </section>
+
+  <section class="ds-stack" id="type">
+    <h2>Type</h2>
+    <p class="ds-quiet">Barlow Condensed for headings and figures, Barlow for everything else. Both started from California highway signs and plates. IBM Plex Mono is for code only.</p>
+    <div class="ds-stack" style="--ds-gap: var(--ds-3)">
+      <div class="type-row"><code class="ds-small ds-quiet">3xl</code><span style="font: 600 var(--ds-text-3xl)/1.1 var(--ds-font-display)">Page title</span></div>
+      <div class="type-row"><code class="ds-small ds-quiet">2xl</code><span style="font: 600 var(--ds-text-2xl)/1.1 var(--ds-font-display)">Section heading</span></div>
+      <div class="type-row"><code class="ds-small ds-quiet">xl</code><span style="font: 600 var(--ds-text-xl)/1.1 var(--ds-font-display)">Subheading and figures, 1:48:12</span></div>
+      <div class="type-row"><code class="ds-small ds-quiet">lg</code><span style="font: 600 var(--ds-text-lg)/1.1 var(--ds-font-display)">Card title</span></div>
+      <div class="type-row"><code class="ds-small ds-quiet">md</code><span>Body text, set in Barlow at a comfortable size for reading.</span></div>
+      <div class="type-row"><code class="ds-small ds-quiet">sm</code><span class="ds-small">Buttons, labels, tables and secondary text.</span></div>
+      <div class="type-row"><code class="ds-small ds-quiet">xs</code><span style="font-size: var(--ds-text-xs)">Pills, tags and help text.</span></div>
+    </div>
+  </section>
+
+  <section class="ds-stack" id="actions">
+    <h2>Actions</h2>
+    <div class="ds-grid">
+      <div class="specimen"><h3>Buttons</h3><p class="ds-quiet ds-small">One primary per view. Buttons change color on hover and never move.</p>
+        <div class="ds-row"><button class="ds-btn ds-btn--primary" type="button">Save route</button><button class="ds-btn" type="button">Export GPX</button><button class="ds-btn ds-btn--quiet" type="button">Duplicate</button><button class="ds-btn ds-btn--danger" type="button">Delete</button></div>
+        <div class="ds-row"><button class="ds-btn ds-btn--primary ds-btn--sm" type="button">Small</button><button class="ds-btn ds-btn--sm" type="button">Small</button><button class="ds-btn" type="button" disabled>Disabled</button></div>
+      </div>
+      <div class="specimen"><h3>Chips and segments</h3><p class="ds-quiet ds-small">Chips filter a list and allow several at once. Segments choose exactly one.</p>
+        <div class="ds-row"><button class="ds-chip" type="button" aria-pressed="true">Climbs</button><button class="ds-chip" type="button" aria-pressed="false">Sprints</button><button class="ds-chip" type="button" aria-pressed="false">Gravel</button></div>
+        <div class="ds-segmented" role="radiogroup" aria-label="Units"><label><input type="radio" name="units" checked>Metric</label><label><input type="radio" name="units">Imperial</label></div>
+      </div>
+      <div class="specimen"><h3>Tabs and path</h3><p class="ds-quiet ds-small">The current item sits on the route line.</p>
+        <nav class="ds-tabs" aria-label="Example tabs"><a href="#actions" aria-current="page">Projects</a><a href="#actions">Rides</a><a href="#actions">About</a></nav>
+        <ol class="ds-crumbs"><li><a href="#actions">Routes</a></li><li><a href="#actions">San Diego</a></li><li aria-current="page">Torrey Pines loop</li></ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-stack" id="forms">
+    <h2>Forms</h2>
+    <div class="ds-grid">
+      <div class="ds-field"><label class="ds-label" for="f1">Email</label><input class="ds-input" id="f1" type="email" placeholder="you@example.com"><span class="ds-help">Used only to reply to you.</span></div>
+      <div class="ds-field"><label class="ds-label" for="f2">Route name</label><input class="ds-input" id="f2" aria-invalid="true" aria-describedby="f2e" value=""><span class="ds-error" id="f2e">Enter a route name to save.</span></div>
+      <div class="ds-field"><label class="ds-label" for="f3">Message</label><textarea class="ds-input" id="f3" placeholder="What are you working on?"></textarea></div>
+      <div class="ds-stack" style="--ds-gap: var(--ds-2)">
+        <label class="ds-check"><input type="checkbox" checked>Include climbs</label>
+        <label class="ds-check"><input type="radio" name="f4" checked>Out and back</label>
+        <label class="ds-check"><input type="radio" name="f4">Loop</label>
+        <label class="ds-check"><input class="ds-switch" type="checkbox" role="switch">Share publicly</label>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-stack" id="data">
+    <h2>Data</h2>
+    <div class="ds-table-wrap">
+      <table class="ds-table">
+        <thead><tr><th scope="col">Segment</th><th scope="col" data-num>Distance</th><th scope="col" data-num>Grade</th><th scope="col" data-num>Best</th><th scope="col">Status</th></tr></thead>
+        <tbody>
+          <tr><td>Torrey Pines climb</td><td data-num>2.4 km</td><td data-num>5.8%</td><td data-num>7:12</td><td><span class="ds-pill ds-pill--accent">Personal best</span></td></tr>
+          <tr><td>La Jolla Shores sprint</td><td data-num>0.9 km</td><td data-num>0.4%</td><td data-num>1:18</td><td><span class="ds-pill ds-pill--good">Synced</span></td></tr>
+          <tr><td>Mount Soledad</td><td data-num>3.1 km</td><td data-num>7.2%</td><td data-num>11:46</td><td><span class="ds-pill">Draft</span></td></tr>
+          <tr><td>Del Mar flats</td><td data-num>4.6 km</td><td data-num>0.2%</td><td data-num>5:51</td><td><span class="ds-pill ds-pill--bad">Sync failed</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ds-grid">
+      <div class="specimen"><h3>State</h3><p class="ds-quiet ds-small">State always carries a word and a ring. Tags are plain categories.</p>
+        <div class="ds-row" style="--ds-gap: var(--ds-2)"><span class="ds-pill ds-pill--good">Good</span><span class="ds-pill ds-pill--warn">Warning</span><span class="ds-pill ds-pill--bad">Failed</span><span class="ds-pill">Neutral</span><span class="ds-tag">Tag</span></div>
+      </div>
+      <div class="specimen"><h3>Loading</h3><p class="ds-quiet ds-small">Skeletons hold the shape of what is coming.</p>
+        <div class="ds-stack" style="--ds-gap: var(--ds-2)"><span class="ds-skeleton" style="height: 1.5rem; width: 60%"></span><span class="ds-skeleton" style="width: 90%"></span><span class="ds-skeleton" style="width: 75%"></span></div>
+      </div>
+      <div class="specimen"><h3>Chart series</h3><p class="ds-quiet ds-small">Use the series in order. Data lines stay 2px.</p>
+        <ul class="ds-legend"><li style="--ds-key: var(--ds-series-1)">Power</li><li style="--ds-key: var(--ds-series-2)">Heart rate</li><li style="--ds-key: var(--ds-series-3)">Cadence</li><li style="--ds-key: var(--ds-series-4)">Speed</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="ds-stack" id="surfaces">
+    <h2>Surfaces</h2>
+    <p class="ds-quiet">Cards are separated by a line and a tint, like panels on a printed chart. Only things that float above the page cast a shadow.</p>
+    <div class="ds-grid">
+      <div class="ds-callout"><strong>Note.</strong> This route crosses a ferry.</div>
+      <div class="ds-callout ds-callout--good"><strong>Saved.</strong> Your route is up to date.</div>
+      <div class="ds-callout ds-callout--bad"><strong>Sync failed.</strong> Reconnect Strava to try again.</div>
+    </div>
+    <div class="ds-grid">
+      <div>
+        <details class="ds-disclosure" open><summary>Why is the route line magenta?</summary><p class="ds-quiet ds-small">Aeronautical charts print airways in magenta, so it stands out against blue water and tan terrain.</p></details>
+        <details class="ds-disclosure"><summary>Which browsers are supported?</summary><p class="ds-quiet ds-small">Current Chrome, Safari and Firefox.</p></details>
+      </div>
+      <div class="ds-row" style="align-items: start"><button class="ds-btn" type="button" id="open-dialog">Open dialog</button><button class="ds-btn" type="button" id="show-toast">Show toast</button></div>
+    </div>
+    <dialog class="ds-dialog" id="dialog" aria-labelledby="dialog-title">
+      <div class="ds-dialog__body"><h3 id="dialog-title">Delete this route?</h3><p class="ds-quiet">Torrey Pines loop and its 14 saved rides will be removed. You cannot undo this.</p></div>
+      <form class="ds-dialog__actions" method="dialog"><button class="ds-btn" value="cancel">Keep route</button><button class="ds-btn ds-btn--danger" value="delete">Delete route</button></form>
+    </dialog>
+  </section>
+
+  <section class="ds-stack" id="route">
+    <h2>Route line</h2>
+    <p class="ds-quiet">The one signature in the kit. Solid is behind you, the filled ring is where you are, and the dashed line is still ahead. Use it only for position or progress.</p>
+    <div class="ds-grid">
+      <div class="specimen"><h3>Timeline</h3>
+        <ol class="ds-route">
+          <li><span class="ds-route__meta">Start</span><span class="ds-route__title">La Jolla Shores</span></li>
+          <li aria-current="step"><span class="ds-route__meta">18.2 km</span><span class="ds-route__title">Torrey Pines summit</span></li>
+          <li><span class="ds-route__meta">42.3 km</span><span class="ds-route__title">Finish</span></li>
+        </ol>
+      </div>
+      <div class="specimen"><h3>Steps</h3>
+        <ol class="ds-route ds-route--across">
+          <li><span class="ds-route__title">Draw</span><span class="ds-route__meta">Set waypoints</span></li>
+          <li aria-current="step"><span class="ds-route__title">Review</span><span class="ds-route__meta">Check weather</span></li>
+          <li><span class="ds-route__title">Export</span><span class="ds-route__meta">Send to device</span></li>
+        </ol>
+        <h3 style="margin-top: var(--ds-4)">Progress</h3>
+        <div class="ds-progress" role="progressbar" aria-label="Ride progress" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="--value: 62%"><i></i></div>
+        <p class="ds-quiet ds-small ds-num">26.2 of 42.3 km</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ds-footer">
+  <div class="ds-container ds-footer__inner"><span>Sectional 0.1.0</span><a href="https://github.com/dom500d/design-system">Source on GitHub</a></div>
+</footer>
+<div class="ds-toasts" id="toasts" aria-live="polite"></div>
+
+<script>
+  const root = document.documentElement;
+  const refresh = () => {
+    const cs = getComputedStyle(root);
+    document.querySelectorAll('[data-token]').forEach((el) => { el.textContent = cs.getPropertyValue(el.dataset.token).trim(); });
+  };
+
+  document.querySelectorAll('input[name="theme"]').forEach((input) => input.addEventListener('change', () => {
+    if (input.value === 'system') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', input.value);
+    refresh();
+  }));
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', refresh);
+
+  const swatches = [['--ds-bg', 'Page'], ['--ds-surface', 'Surface'], ['--ds-sunken', 'Sunken'], ['--ds-line', 'Line'], ['--ds-line-strong', 'Strong line'], ['--ds-fg', 'Text'], ['--ds-fg2', 'Quiet text'], ['--ds-accent', 'Magenta'], ['--ds-second', 'Chart blue'], ['--ds-good', 'Good'], ['--ds-warn', 'Warning'], ['--ds-bad', 'Bad']];
+  document.getElementById('swatches').innerHTML = swatches.map(([t, n]) => `<div class="swatch"><i style="background: var(${t})"></i><span>${n}</span><code data-token="${t}"></code></div>`).join('');
+
+  // Example elevation, drawn on one scale so the axis labels are accurate.
+  const elev = [18, 24, 41, 63, 90, 132, 171, 204, 226, 212, 184, 160, 151, 167, 196, 238, 261, 244, 203, 158, 121, 96, 72, 54, 38, 26, 19];
+  const W = 640, H = 150, L = 34, R = 8, T = 8, B = 20, maxKm = 42, maxM = 300;
+  const x = (km) => L + (km / maxKm) * (W - L - R), y = (m) => T + (1 - m / maxM) * (H - T - B);
+  const line = elev.map((m, i) => `${i ? 'L' : 'M'}${x((i / (elev.length - 1)) * maxKm).toFixed(1)} ${y(m).toFixed(1)}`).join(' ');
+  const grid = [0, 150, 300].map((m) => `<line x1="${L}" x2="${W - R}" y1="${y(m)}" y2="${y(m)}" stroke="var(--ds-line)"/><text x="${L - 6}" y="${y(m) + 4}" text-anchor="end">${m}</text>`).join('');
+  const ticks = [0, 21, 42].map((k, i) => `<text x="${x(k)}" y="${H - 5}" text-anchor="${['start', 'middle', 'end'][i]}">${k} km</text>`).join('');
+  document.getElementById('profile').innerHTML = `<svg class="profile" viewBox="0 0 ${W} ${H}" role="img" aria-label="Example elevation profile, 42 kilometers, peaking at 261 meters">${grid}<path d="${line} L${x(maxKm)} ${y(0)} L${x(0)} ${y(0)} Z" fill="color-mix(in srgb, var(--ds-series-1) 14%, transparent)"/><path d="${line}" fill="none" stroke="var(--ds-series-1)" stroke-width="2" stroke-linejoin="round"/>${ticks}</svg>`;
+
+  document.querySelectorAll('.ds-chip').forEach((chip) => chip.addEventListener('click', () => {
+    chip.setAttribute('aria-pressed', String(chip.getAttribute('aria-pressed') !== 'true'));
+  }));
+
+  const dialog = document.getElementById('dialog');
+  document.getElementById('open-dialog').addEventListener('click', () => dialog.showModal());
+  document.getElementById('show-toast').addEventListener('click', () => {
+    const toast = document.createElement('div');
+    toast.className = 'ds-toast';
+    toast.innerHTML = '<span>Route saved</span><button class="ds-btn ds-btn--sm" type="button">Undo</button>';
+    document.getElementById('toasts').append(toast);
+    setTimeout(() => toast.remove(), 4000);
+  });
+
+  refresh();
+</script>
+</body>
+</html>

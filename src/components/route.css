@@ -1,0 +1,163 @@
+/* The route line is the kit's one signature: a magenta line with hollow
+   waypoint rings, used only to show position or progress along something. */
+
+.ds-route {
+  --ring: 0.875rem;
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-route > li {
+  position: relative;
+  min-width: 0;
+  padding: 0 0 var(--ds-5) calc(var(--ring) + var(--ds-3));
+}
+
+.ds-route > li:last-child { padding-bottom: 0; }
+
+/* Ring */
+.ds-route > li::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 0.32em;
+  left: 0;
+  width: var(--ring);
+  height: var(--ring);
+  border: var(--ds-route-weight) solid var(--ds-accent);
+  border-radius: 50%;
+  background: var(--ds-ring-fill, var(--ds-bg));
+}
+
+/* Leg to the next waypoint */
+.ds-route > li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 0.32em;
+  bottom: -0.32em;
+  left: calc((var(--ring) - var(--ds-route-weight)) / 2);
+  width: var(--ds-route-weight);
+  background: var(--ds-accent);
+}
+
+.ds-route__meta {
+  display: block;
+  color: var(--ds-fg2);
+  font-size: var(--ds-text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-route__title {
+  display: block;
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-text-lg);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* The current waypoint is filled. Anything after it is planned, not flown. */
+.ds-route > li[aria-current]::before { background: var(--ds-accent); }
+
+.ds-route > li[aria-current] ~ li::before,
+.ds-route > li[aria-current] ~ li::after,
+.ds-route > li[aria-current]::after {
+  border-color: var(--ds-line-strong);
+}
+
+.ds-route > li[aria-current]::after,
+.ds-route > li[aria-current] ~ li::after {
+  background: repeating-linear-gradient(to bottom, var(--ds-line-strong) 0 4px, transparent 4px 8px);
+}
+
+.ds-route--across {
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+}
+
+.ds-route--across > li {
+  padding: calc(var(--ring) + var(--ds-2)) var(--ds-3) 0 0;
+}
+
+.ds-route--across > li::before { top: 0; }
+
+.ds-route--across > li:not(:last-child)::after {
+  top: calc((var(--ring) - var(--ds-route-weight)) / 2);
+  right: 0;
+  bottom: auto;
+  left: 0;
+  width: auto;
+  height: var(--ds-route-weight);
+}
+
+.ds-route--across > li[aria-current]::after,
+.ds-route--across > li[aria-current] ~ li::after {
+  background: repeating-linear-gradient(to right, var(--ds-line-strong) 0 4px, transparent 4px 8px);
+}
+
+@media (max-width: 34rem) {
+  .ds-route--across { grid-auto-flow: row; }
+
+  .ds-route--across > li {
+    padding: 0 0 var(--ds-4) calc(var(--ring) + var(--ds-3));
+  }
+
+  .ds-route--across > li::before { top: 0.32em; }
+
+  .ds-route--across > li:not(:last-child)::after {
+    top: 0.32em;
+    right: auto;
+    bottom: -0.32em;
+    left: calc((var(--ring) - var(--ds-route-weight)) / 2);
+    width: var(--ds-route-weight);
+    height: auto;
+  }
+
+  .ds-route--across > li[aria-current]::after,
+  .ds-route--across > li[aria-current] ~ li::after {
+    background: repeating-linear-gradient(to bottom, var(--ds-line-strong) 0 4px, transparent 4px 8px);
+  }
+}
+
+/* Set --value as a percentage, alongside role="progressbar". */
+.ds-progress {
+  position: relative;
+  height: 0.875rem;
+  margin-right: 0.875rem;
+}
+
+.ds-progress::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -0.875rem;
+  left: 0;
+  height: var(--ds-route-weight);
+  margin-top: calc(var(--ds-route-weight) / -2);
+  background: repeating-linear-gradient(to right, var(--ds-line-strong) 0 4px, transparent 4px 8px);
+}
+
+.ds-progress::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: var(--value, 0%);
+  height: var(--ds-route-weight);
+  margin-top: calc(var(--ds-route-weight) / -2);
+  background: var(--ds-accent);
+}
+
+.ds-progress > i {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: var(--value, 0%);
+  box-sizing: border-box;
+  width: 0.875rem;
+  height: 0.875rem;
+  border: var(--ds-route-weight) solid var(--ds-accent);
+  border-radius: 50%;
+  background: var(--ds-ring-fill, var(--ds-bg));
+}

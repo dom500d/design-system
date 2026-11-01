@@ -1,0 +1,138 @@
+/* Light values live on :root. The two dark blocks hold identical values:
+   the first follows the OS, the second is an explicit data-theme="dark". */
+:root {
+  color-scheme: light;
+
+  /* surfaces */
+  --ds-bg: #e7f0ea;
+  --ds-surface: #f8fbf7;
+  --ds-sunken: #dce8e0;
+  --ds-line: #a3bbae;
+  --ds-line-strong: #6f8b7e;
+
+  /* text */
+  --ds-fg: #12263a;
+  --ds-fg2: #3c5364;
+
+  /* airway magenta: position, primary action, focus */
+  --ds-accent: #a3146e;
+  --ds-fill: #a3146e;
+  --ds-fill-hover: #870f5a;
+  --ds-on-fill: #ffffff;
+
+  /* chart blue: links and secondary information */
+  --ds-second: #1b5fa6;
+
+  /* state */
+  --ds-good: #1f7350;
+  --ds-warn: #80540a;
+  --ds-bad: #b3261e;
+
+  /* data series, in order of use */
+  --ds-series-1: #a3146e;
+  --ds-series-2: #1b5fa6;
+  --ds-series-3: #80540a;
+  --ds-series-4: #1f7350;
+
+  /* overlays only. Nothing else casts a shadow. */
+  --ds-shadow: 0 8px 28px rgb(18 38 58 / 0.22);
+  --ds-backdrop: rgb(18 38 58 / 0.45);
+
+  /* type */
+  --ds-font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --ds-font-body: 'Barlow', system-ui, -apple-system, sans-serif;
+  --ds-font-code: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --ds-text-xs: 0.8125rem;
+  --ds-text-sm: 0.9375rem;
+  --ds-text-md: 1.0625rem;
+  --ds-text-lg: 1.3125rem;
+  --ds-text-xl: 1.75rem;
+  --ds-text-2xl: 2.5rem;
+  --ds-text-3xl: clamp(2.75rem, 7vw, 4.5rem);
+
+  /* space, on a 4px base */
+  --ds-1: 0.25rem;
+  --ds-2: 0.5rem;
+  --ds-3: 0.75rem;
+  --ds-4: 1rem;
+  --ds-5: 1.5rem;
+  --ds-6: 2rem;
+  --ds-7: 3rem;
+  --ds-8: 4rem;
+
+  /* shape */
+  --ds-radius: 5px;
+  --ds-radius-lg: 8px;
+  --ds-control: 2.5rem;
+  --ds-control-sm: 2rem;
+  --ds-route-weight: 2px;
+
+  /* motion */
+  --ds-fast: 120ms;
+  --ds-slow: 220ms;
+  --ds-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* layout */
+  --ds-page: 72rem;
+  --ds-prose: 42rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --ds-bg: #0f1f1b;
+    --ds-surface: #182c27;
+    --ds-sunken: #0b1714;
+    --ds-line: #36524a;
+    --ds-line-strong: #5d7f74;
+    --ds-fg: #e8f0ee;
+    --ds-fg2: #a5bab4;
+    --ds-accent: #f483c4;
+    --ds-fill: #f483c4;
+    --ds-fill-hover: #f9a3d5;
+    --ds-on-fill: #3a0526;
+    --ds-second: #86bdf2;
+    --ds-good: #66cfa0;
+    --ds-warn: #e8bd6a;
+    --ds-bad: #f4978e;
+    --ds-series-1: #f483c4;
+    --ds-series-2: #86bdf2;
+    --ds-series-3: #e8bd6a;
+    --ds-series-4: #66cfa0;
+    --ds-shadow: 0 8px 28px rgb(0 0 0 / 0.5);
+    --ds-backdrop: rgb(5 12 10 / 0.65);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --ds-bg: #0f1f1b;
+  --ds-surface: #182c27;
+  --ds-sunken: #0b1714;
+  --ds-line: #36524a;
+  --ds-line-strong: #5d7f74;
+  --ds-fg: #e8f0ee;
+  --ds-fg2: #a5bab4;
+  --ds-accent: #f483c4;
+  --ds-fill: #f483c4;
+  --ds-fill-hover: #f9a3d5;
+  --ds-on-fill: #3a0526;
+  --ds-second: #86bdf2;
+  --ds-good: #66cfa0;
+  --ds-warn: #e8bd6a;
+  --ds-bad: #f4978e;
+  --ds-series-1: #f483c4;
+  --ds-series-2: #86bdf2;
+  --ds-series-3: #e8bd6a;
+  --ds-series-4: #66cfa0;
+  --ds-shadow: 0 8px 28px rgb(0 0 0 / 0.5);
+  --ds-backdrop: rgb(5 12 10 / 0.65);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ds-fast: 0ms;
+    --ds-slow: 0ms;
+  }
+}

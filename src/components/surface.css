@@ -1,0 +1,168 @@
+.ds-card {
+  --ds-ring-fill: var(--ds-surface);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--ds-line);
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-surface);
+  color: inherit;
+}
+
+.ds-card__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-2) var(--ds-3);
+  padding: var(--ds-3) var(--ds-4);
+  border-bottom: 1px solid var(--ds-line);
+}
+
+.ds-card__title {
+  margin: 0;
+  font-family: var(--ds-font-display);
+  font-size: var(--ds-text-lg);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.ds-card__body {
+  display: grid;
+  gap: var(--ds-3);
+  padding: var(--ds-4);
+}
+
+.ds-card__body > * { min-width: 0; }
+
+.ds-card__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-bottom: 1px solid var(--ds-line);
+  background: var(--ds-sunken);
+}
+
+/* A whole card that links. It responds with its edge and title, never by lifting. */
+a.ds-card {
+  text-decoration: none;
+  transition: border-color var(--ds-fast) var(--ds-ease);
+}
+
+a.ds-card:hover { border-color: var(--ds-accent); }
+a.ds-card:hover .ds-card__title { color: var(--ds-accent); }
+
+.ds-callout {
+  --tone: var(--ds-second);
+  padding: var(--ds-3) var(--ds-4);
+  border: 1px solid var(--tone);
+  border-radius: var(--ds-radius-lg);
+  background: color-mix(in srgb, var(--tone) 9%, transparent);
+  font-size: var(--ds-text-sm);
+}
+
+.ds-callout--good { --tone: var(--ds-good); }
+.ds-callout--warn { --tone: var(--ds-warn); }
+.ds-callout--bad { --tone: var(--ds-bad); }
+.ds-callout strong { font-weight: 600; }
+
+.ds-disclosure {
+  border-bottom: 1px solid var(--ds-line);
+}
+
+.ds-disclosure summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-3);
+  min-height: var(--ds-control);
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+
+.ds-disclosure summary::-webkit-details-marker { display: none; }
+
+.ds-disclosure summary::after {
+  content: '+';
+  color: var(--ds-fg2);
+  font-size: var(--ds-text-lg);
+  font-weight: 400;
+}
+
+.ds-disclosure[open] summary::after { content: '\2212'; }
+.ds-disclosure > :not(summary) { padding-bottom: var(--ds-3); }
+
+/* Overlays are the only things above the page, so they alone get a shadow. */
+.ds-dialog {
+  width: min(32rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  padding: 0;
+  border: 1px solid var(--ds-line-strong);
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-surface);
+  color: var(--ds-fg);
+  box-shadow: var(--ds-shadow);
+}
+
+.ds-dialog::backdrop { background: var(--ds-backdrop); }
+
+.ds-dialog[open] { animation: ds-appear var(--ds-slow) var(--ds-ease); }
+
+.ds-dialog__body {
+  display: grid;
+  gap: var(--ds-3);
+  padding: var(--ds-5);
+}
+
+.ds-dialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--ds-2);
+  padding: var(--ds-3) var(--ds-5);
+  border-top: 1px solid var(--ds-line);
+}
+
+.ds-toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-4);
+  width: min(24rem, 100%);
+  padding: var(--ds-2) var(--ds-2) var(--ds-2) var(--ds-4);
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-fg);
+  color: var(--ds-bg);
+  box-shadow: var(--ds-shadow);
+  font-size: var(--ds-text-sm);
+  font-weight: 500;
+}
+
+.ds-toast .ds-btn {
+  border-color: transparent;
+  color: inherit;
+}
+
+.ds-toasts {
+  position: fixed;
+  right: max(var(--ds-4), env(safe-area-inset-right, 0px));
+  bottom: max(var(--ds-4), env(safe-area-inset-bottom, 0px));
+  left: max(var(--ds-4), env(safe-area-inset-left, 0px));
+  z-index: 50;
+  display: grid;
+  justify-items: end;
+  gap: var(--ds-2);
+  pointer-events: none;
+}
+
+.ds-toasts > * {
+  pointer-events: auto;
+  animation: ds-appear var(--ds-slow) var(--ds-ease);
+}
+
+@keyframes ds-appear {
+  from { opacity: 0; }
+}

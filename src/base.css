@@ -1,0 +1,62 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ds-bg);
+  color: var(--ds-fg);
+  font-family: var(--ds-font-body);
+  font-size: var(--ds-text-md);
+  line-height: 1.55;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--ds-font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--ds-text-3xl); }
+h2 { font-size: var(--ds-text-2xl); }
+h3 { font-size: var(--ds-text-xl); }
+h4 { font-size: var(--ds-text-lg); }
+
+p {
+  margin: 0;
+  max-width: var(--ds-prose);
+}
+
+a {
+  color: var(--ds-second);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+img, svg, video {
+  max-width: 100%;
+}
+
+code, kbd, pre {
+  font-family: var(--ds-font-code);
+  font-size: 0.9em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ds-accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--ds-accent) 24%, transparent);
+}

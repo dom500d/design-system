@@ -1,62 +1,76 @@
 # Sectional
 
-Shared color tokens and CSS components for my projects, drawn from aeronautical and survey charts. It is plain CSS, so it works with static HTML, Vite and React alike, and it has light and dark themes.
+Sectional is the set of colors, fonts and page parts I share across my projects, so they all look like they belong together. The look comes from the charts pilots use to find their way.
 
-Open `docs/index.html` to see everything, and read [DESIGN.md](DESIGN.md) for the rules. Run `npm run docs` to rebuild and open it.
+It works in plain HTML sites and in React or Vite apps. It has a light mode and a dark mode.
 
-## Use it
+To see everything, open `docs/index.html` in your browser. The design rules are in [DESIGN.md](DESIGN.md).
 
-Replace `v0.1.0` below with the latest version from the [releases page](https://github.com/dom500d/design-system/releases).
+## Add it to a project
 
-### Static sites
+Use the newest version from the [releases page](https://github.com/dom500d/design-system/releases). The examples below use `v0.1.0`.
+
+### Plain HTML site
+
+Add these lines inside `<head>`:
 
 ```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dom500d/design-system@v0.1.0/dist/sectional.css">
 ```
 
-### Projects with npm
+Then use the classes in your page:
+
+```html
+<button class="ds-btn ds-btn--primary">Save route</button>
+```
+
+### Project that uses npm
+
+Install it:
 
 ```sh
 npm install github:dom500d/design-system#v0.1.0
 ```
 
+Then import it:
+
 ```ts
 import '@dom500d/design-system/sectional.css';
-import { token, light, ds } from '@dom500d/design-system';
+import { token, ds } from '@dom500d/design-system';
 
-// Follows the active theme. A misspelled name is a type error.
-const style = { color: token.fg, padding: token.space4 };
-
-// Joins class names, and rejects any the kit does not ship.
-const className = ds('ds-btn', 'ds-btn--primary', small && 'ds-btn--sm');
-
-// Raw values, for canvas or map libraries that cannot read CSS variables.
-L.polyline(points, { color: light.accent });
+const style = { color: token.fg };
+const className = ds('ds-btn', 'ds-btn--primary');
 ```
 
-`token` holds `var(--ds-*)` references, so it updates with the theme. `light` and `dark` hold raw values, so reach for those only when CSS variables are not an option. `TokenName` and `DsClass` are exported as types.
+TypeScript will show an error if you misspell a color or class name.
 
-## Theming
+The Google Fonts line from the HTML example is still needed, so add it to your page too.
 
-The kit follows the system setting. To force a theme, set `data-theme="light"` or `data-theme="dark"` on `<html>`.
+## Light and dark mode
 
-## Adopting it gradually
+Sectional follows the mode set on the user's device. To force one mode, add `data-theme="light"` or `data-theme="dark"` to the `<html>` tag.
 
-Everything is in the `ds.*` cascade layers and uses `ds-` names, so it will not collide with existing styles. A project's own CSS always wins, which means components can be migrated one at a time.
+## Moving an existing project over
 
-## Development
+Sectional won't break your current styles. All of its class names start with `ds-`, and if your CSS clashes with Sectional, yours wins. You can switch over one piece at a time.
 
-`src/tokens.css` is the single source for tokens. `npm run build` generates `dist/sectional.css`, `dist/tokens.js` and `dist/tokens.d.ts` from `src/`, so a new token or class gets its types automatically. Commit `dist/`, because CDN and git installs use it directly.
+## Making changes
 
-`npm test` builds, then fails if any text and background pair drops below WCAG AA in either theme.
+Colors and sizes live in `src/tokens.css`. The page parts live in `src/components/`.
 
-## Releases
+After a change, run:
 
-Every merge into `main` publishes a new version: the build and tests run, then the version is bumped, tagged and released. It bumps the patch number by default. Put `#minor` or `#major` in the merge message for a bigger bump.
+```sh
+npm test
+```
+
+This rebuilds the files in `dist/` and checks that all text is still easy to read. Commit the `dist/` folder along with your changes.
+
+## New versions
+
+Every merge into `main` releases a new version on its own. A normal merge raises the last number, such as `0.1.0` to `0.1.1`. For a bigger jump, put `#minor` or `#major` in the merge message.
 
 ## License
 
-All rights reserved. See [LICENSE](LICENSE). This code is public so my own projects can load it, and it is not licensed for anyone else to use.
+All rights reserved. This code is public so my own projects can load it, but nobody else may use it. See [LICENSE](LICENSE).

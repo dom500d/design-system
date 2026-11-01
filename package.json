@@ -2,6 +2,7 @@
   "name": "@dom500d/design-system",
   "version": "0.1.0",
   "private": true,
+  "license": "SEE LICENSE IN LICENSE",
   "description": "Sectional: shared color tokens and CSS components, based on aeronautical and survey charts.",
   "type": "module",
   "style": "dist/sectional.css",

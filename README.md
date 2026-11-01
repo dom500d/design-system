@@ -6,7 +6,7 @@ Open `docs/index.html` to see everything, and read [DESIGN.md](DESIGN.md) for th
 
 ## Use it
 
-No release is tagged yet. Replace `v0.1.0` below with the latest tag once one exists.
+Replace `v0.1.0` below with the latest version from the [releases page](https://github.com/dom500d/design-system/releases).
 
 ### Static sites
 
@@ -52,3 +52,11 @@ Everything is in the `ds.*` cascade layers and uses `ds-` names, so it will not 
 `src/tokens.css` is the single source for tokens. `npm run build` generates `dist/sectional.css`, `dist/tokens.js` and `dist/tokens.d.ts` from `src/`, so a new token or class gets its types automatically. Commit `dist/`, because CDN and git installs use it directly.
 
 `npm test` builds, then fails if any text and background pair drops below WCAG AA in either theme.
+
+## Releases
+
+Every merge into `main` publishes a new version: the build and tests run, then the version is bumped, tagged and released. It bumps the patch number by default. Put `#minor` or `#major` in the merge message for a bigger bump.
+
+## License
+
+All rights reserved. See [LICENSE](LICENSE). This code is public so my own projects can load it, and it is not licensed for anyone else to use.

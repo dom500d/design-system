@@ -23,6 +23,11 @@ mkdirSync(resolve(root, 'dist'), { recursive: true });
 writeFileSync(resolve(root, 'dist/sectional.css'), `/* Sectional ${version} */\n${output}`);
 console.log(`Built dist/sectional.css (${(output.length / 1024).toFixed(1)} KB)`);
 
+// Keeps the version shown in the docs footer in step with each release.
+const docsPath = resolve(root, 'docs/index.html');
+const docs = readFileSync(docsPath, 'utf8');
+writeFileSync(docsPath, docs.replace(/Sectional \d+\.\d+\.\d+/, `Sectional ${version}`));
+
 // Typed layer. tokens.css stays the single source: everything below is read
 // from it, so a token or class that exists in CSS exists in TypeScript.
 const tokensCss = readFileSync(resolve(root, 'src/tokens.css'), 'utf8');
